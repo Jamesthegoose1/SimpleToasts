@@ -1,0 +1,26 @@
+{
+  "name": "SimpleToasts Demo",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "SimpleToasts": {
+        "$path": "src"
+      }
+    },
+
+    "ServerScriptService": {
+      "Server": {
+        "$path": "demo/server"
+      }
+    },
+
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "Client": {
+          "$path": "demo/client"
+        }
+      }
+    }
+  }
+}

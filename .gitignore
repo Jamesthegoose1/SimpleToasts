@@ -1,0 +1,19 @@
+# Roblox build artifacts
+*.rbxlx
+*.rbxl
+*.rbxm
+*.rbxlx.lock
+*.rbxl.lock
+
+# Tooling artifacts (regenerated locally / in CI)
+sourcemap.json
+globalTypes.d.luau
+
+# Wally install output
+Packages/
+ServerPackages/
+DevPackages/
+
+# Local-only AI agent instructions
+CLAUDE.md
+.claude/

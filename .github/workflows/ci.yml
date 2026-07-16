@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      # Installs every tool pinned in rokit.toml (rojo, selene, stylua, luau-lsp).
+      - name: Install tools (Rokit)
+        uses: CompeyDev/setup-rokit@v0.1.2
+
+      - name: Lint (selene)
+        run: selene src demo
+
+      - name: Formatting (stylua)
+        run: stylua --check src demo
+
+      - name: Download Roblox type definitions
+        run: curl -sSL -o globalTypes.d.luau https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/scripts/globalTypes.d.luau
+
+      - name: Type-check (luau-lsp)
+        run: |
+          rojo sourcemap demo.project.json -o sourcemap.json
+          luau-lsp analyze --definitions=globalTypes.d.luau --sourcemap=sourcemap.json src demo
+
+      # Structural check: both the package model and the demo place must build.
+      - name: Build (rojo)
+        run: |
+          rojo build default.project.json -o SimpleToasts.rbxm
+          rojo build demo.project.json -o demo.rbxlx

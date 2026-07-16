@@ -1,0 +1,4 @@
+{
+    "luau-lsp.sourcemap.rojoProjectFile": "demo.project.json",
+    "luau-lsp.types.definitionFiles": ["globalTypes.d.luau"]
+}
