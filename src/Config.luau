@@ -6,6 +6,7 @@ local Config: Types.Config = {
 	defaultPosition = "top-right",
 	defaultClosable = true,
 	maxVisible = 5,
+	displayOrder = 1000,
 	stacked = true,
 	expandedCount = 3,
 

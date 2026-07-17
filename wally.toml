@@ -1,7 +1,7 @@
 [package]
 name = "rvila94/simpletoasts"
 description = "Zero-dependency, PrimeNG-inspired toast notification library for Roblox."
-version = "0.1.0"
+version = "0.2.0"
 license = "MIT"
 authors = ["rvila94 (https://github.com/rvila94)"]
 registry = "https://github.com/UpliftGames/wally-index"

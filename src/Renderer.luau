@@ -85,6 +85,7 @@ function Renderer.init(config: Types.Config)
 	gui.Name = "ToastScreenGui"
 	gui.ResetOnSpawn = false
 	gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	gui.DisplayOrder = config.displayOrder
 	gui.IgnoreGuiInset = false
 	gui.Parent = playerGui
 

@@ -123,6 +123,7 @@ Toast.configure({
 	defaultPosition = "top-right",
 	defaultClosable = true,
 	maxVisible = 5,                -- cap per position
+	displayOrder = 1000,           -- ScreenGui DisplayOrder (keeps toasts above game UI)
 
 	-- Stacked piles
 	stacked = true,                -- false = classic vertical list

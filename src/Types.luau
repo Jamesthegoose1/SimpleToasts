@@ -32,6 +32,7 @@ export type Config = {
 	defaultPosition: Position,
 	defaultClosable: boolean,
 	maxVisible: number,
+	displayOrder: number,
 	stacked: boolean,
 	expandedCount: number,
 	toastWidth: number,
