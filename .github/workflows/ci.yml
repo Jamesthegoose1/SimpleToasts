@@ -1,12 +1,15 @@
 name: CI
 
 on:
-  push:
-    branches: [main]
-  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:    
+
+permissions:
+  contents: write       
 
 jobs:
-  check:
+  build-and-release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -34,3 +37,16 @@ jobs:
         run: |
           rojo build default.project.json -o SimpleToasts.rbxm
           rojo build demo.project.json -o demo.rbxlx
+
+      - name: Generate timestamp for the release tag
+        run: echo "DATE_TAG=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
+
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: daily-${{ env.DATE_TAG }}
+          name: Daily Build ${{ env.DATE_TAG }}
+          body: "Automated daily build of SimpleToasts."
+          files: |
+            SimpleToasts.rbxm
+            demo.rbxlx
